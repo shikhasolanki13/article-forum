@@ -1,0 +1,30 @@
+<div class="col-sm-6">
+	<% if user_signed_in? %>
+	<%= form_with(model: [ @article, @article.comments.build ],  local: true) do |form| %>
+	<p>
+		<%#= form.label :commenter %><br>
+		<%= form.hidden_field :commenter , :value => current_user.id %>
+	</p>
+	<div class="form-group">
+		<%= form.text_area :body, :class =>"form-control", :style =>"height:100px" %>
+	</div>
+	<p>
+		<%= form.submit 'comment', class: "btn btn-success"  %>
+	</p>
+
+	<% end %>
+	<% else %>
+	<%= form_with(model: [ @article, @article.comments.build ],  local: true) do |form| %>
+	<p>
+		<%#= form.label :commenter %><br>
+		<%#= form.hidden_field :commenter , :value => current_user.id %>
+	</p>
+	<div class="form-group">
+		<%= form.text_area :body, :class =>"form-control", :style =>"height:100px" %>
+	</div>
+	<p>
+		<%= form.submit 'comment', class: "btn btn-success"  %>
+	</p>
+	<% end %>
+	<% end %>
+</div>

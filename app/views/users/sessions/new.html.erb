@@ -1,0 +1,100 @@
+<!-- <div style="margin-top: 30px;"></div>
+<div class="container" style="margin-bottom: 80px">
+  <div class="row">  
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div class="card" style="padding: 30px">
+        <div class="container">
+          <h2 class="text-center card-title">Log In</h2>
+
+
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="form-group">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :password %><br />
+            <%= f.password_field :password, autocomplete: "off", class:"form-control" %>
+          </div>
+
+          <% if devise_mapping.rememberable? -%>
+          <div class="field">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          </div>
+          <% end -%>
+
+          <div class="actions">
+            <%= f.submit "Log in", class: "btn btn-success btn-block" %>
+          </div>
+          <% end %>
+          <br>
+          
+
+          <%= render "users/shared/links" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+-->
+
+<body>
+  <section style="margin-top: 20px">
+    <div class="container">
+      <div class="row justify-content-md-center">
+        <div class="card-wrapper">
+          <div class="card fat">
+            <div class="card-body">
+              <h4 class="card-title">Login</h4>
+
+              <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+              <div class="form-group">
+                <label for="email">E-Mail Address</label>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"form-control" %>
+              </div>
+
+              <div class="form-group">
+                <label for="password">Password
+                </label>
+                <%= f.password_field :password, autocomplete: "off", class:"form-control" %>
+              </div>
+
+              <% if devise_mapping.rememberable? -%>
+              <div class="field">
+                <%= f.check_box :remember_me %>
+                <%= f.label :remember_me %>
+
+                <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+                <%= link_to "Forgot Password?", new_password_path('user') , style: "float: right;margin-left: 40px" %><br />
+                <% end -%>
+              </div>
+              <% end -%>
+
+              <div class="form-group no-margin">
+                <%= f.submit "Log in", class: "btn btn-primary btn-block" %>
+              </div>
+
+              <div class="margin-top20 text-center">
+                Don't have an account? 
+                <%= link_to 'Create One' , new_user_registration_path %>
+
+              </div>
+
+              <% end %>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="js/jquery.min.js"></script>
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+  <script src="js/my-login.js"></script>
+</body>

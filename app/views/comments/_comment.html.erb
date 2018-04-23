@@ -1,0 +1,21 @@
+<div class="card">
+	<div class="card-body">
+		<p>
+			<strong>Commenter:</strong>
+			<%= comment.user.email %>
+		</p>
+
+		<p>
+			<strong>Comment:</strong>
+			<%= comment.body %>
+		</p>
+		<% if user_signed_in? %>
+		<p>
+			<%= link_to 'Destroy Comment', [comment.article, comment],
+			method: :delete,
+			data: { confirm: 'Are you sure?' } %>
+		</p>
+		<% end %>
+	</div>
+</div>
+

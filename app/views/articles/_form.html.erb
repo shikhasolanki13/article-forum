@@ -1,0 +1,50 @@
+<%= form_for @article, :html => { :class => "" } do |f| %>
+
+  <% if @article.errors.any? %>
+    <div id="error_expl" class="card">
+      <div class="card-body">  
+        <div>
+          <h3><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h3>
+        </div>
+        <div>
+          <ul>
+          <% @article.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :title, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :title, :class => 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :description, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_area :description, :class => 'form-control ckeditor' %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :banner_image, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.file_field :banner_image %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+    </div>
+  </div>
+
+<% end %>
+
+<script type="text/javascript">
+  $(".ckeditor").ckeditor();
+</script>
